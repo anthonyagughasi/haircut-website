@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Luxurious dark barber palette */
+    --background: 20 12% 6%;
+    --foreground: 40 20% 92%;
+
+    --card: 20 10% 10%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 20 10% 8%;
+    --popover-foreground: 40 20% 92%;
+
+    /* Gold accent - the star */
+    --primary: 38 65% 50%;
+    --primary-foreground: 20 12% 6%;
+
+    /* Warm brown leather tones */
+    --secondary: 25 25% 15%;
+    --secondary-foreground: 40 20% 92%;
+
+    /* Charcoal muted */
+    --muted: 20 8% 14%;
+    --muted-foreground: 40 10% 55%;
+
+    /* Subtle warm accent */
+    --accent: 30 20% 18%;
+    --accent-foreground: 40 20% 92%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 40 20% 92%;
+
+    --border: 25 15% 20%;
+    --input: 25 15% 18%;
+    --ring: 38 65% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --gold: 38 65% 50%;
+    --gold-light: 40 70% 60%;
+    --gold-dark: 35 60% 40%;
+    --espresso: 25 35% 12%;
+    --charcoal: 20 10% 8%;
+    --cream: 40 30% 90%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(38, 65%, 50%) 0%, hsl(35, 60%, 40%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(20, 12%, 6%) 0%, hsl(20, 10%, 10%) 100%);
+    --gradient-hero: linear-gradient(180deg, transparent 0%, hsl(20, 12%, 6%) 100%);
+
+    /* Shadows */
+    --shadow-gold: 0 4px 30px -4px hsl(38, 65%, 50%, 0.3);
+    --shadow-elegant: 0 25px 50px -12px hsl(0, 0%, 0%, 0.5);
+
+    --sidebar-background: 20 10% 8%;
+    --sidebar-foreground: 40 20% 92%;
+    --sidebar-primary: 38 65% 50%;
+    --sidebar-primary-foreground: 20 12% 6%;
+    --sidebar-accent: 25 25% 15%;
+    --sidebar-accent-foreground: 40 20% 92%;
+    --sidebar-border: 25 15% 20%;
+    --sidebar-ring: 38 65% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  /* Gold shimmer animation */
+  .gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--gold)) 0%,
+      hsl(var(--gold-light)) 50%,
+      hsl(var(--gold)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Barber pole animation */
+  .barber-pole {
+    background: repeating-linear-gradient(
+      45deg,
+      hsl(var(--primary)) 0px,
+      hsl(var(--primary)) 10px,
+      hsl(var(--background)) 10px,
+      hsl(var(--background)) 20px,
+      hsl(0, 70%, 50%) 20px,
+      hsl(0, 70%, 50%) 30px,
+      hsl(var(--background)) 30px,
+      hsl(var(--background)) 40px
+    );
+    background-size: 40px 40px;
+    animation: barber-spin 1s linear infinite;
+  }
+
+  @keyframes barber-spin {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+  }
+
+  /* Elegant underline hover */
+  .elegant-underline {
+    position: relative;
+  }
+
+  .elegant-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background: hsl(var(--primary));
+    transition: width 0.3s ease;
+  }
+
+  .elegant-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Gold text gradient */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-light)) 0%, hsl(var(--gold)) 50%, hsl(var(--gold-dark)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply scale-[1.02] shadow-2xl;
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Image overlay gradient */
+  .image-overlay {
+    @apply relative overflow-hidden;
+  }
+
+  .image-overlay::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl border border-border/50;
+  }
+
+  /* Fade in animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Slide up animation */
+  .slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(60px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* React datepicker custom styles */
+.react-datepicker {
+  font-family: 'Inter', sans-serif !important;
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 0.75rem !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.react-datepicker__header {
+  background-color: hsl(var(--muted)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker-time__header {
+  color: hsl(var(--foreground)) !important;
+}
+
+.react-datepicker__day {
+  color: hsl(var(--foreground)) !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: hsl(var(--accent)) !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+.react-datepicker__day--disabled {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: hsl(var(--foreground)) !important;
+}
