@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import haircutImage from "@/assets/haircut-closeup.jpg";
-import beardImage from "@/assets/beard-style.jpg";
-import toolsImage from "@/assets/barber-tools.jpg";
+
+// Replaced all missing local images with high-quality direct URLs
+const haircutImage = "https://media.istockphoto.com/id/2153275978/photo/barber-cutting-hair-in-barber-shop.jpg?s=612x612&w=0&k=20&c=ts-bMtC79Re-sQ9dOX_xikQ3-__cWC-9wJSBZxQ_kvI="; // Sharp fade closeup
+
+const beardImage = "https://media.istockphoto.com/id/2157531589/photo/hairdresser-trimming-beard-of-the-customer-at-a-barbershop-small-business.jpg?s=612x612&w=0&k=20&c=hHSbM1zEBSJW_lVxK3y3MUe1BY3eX_cssjmVY3cy5OE="; // Beard sculpting closeup
+
+const toolsImage = "https://media.istockphoto.com/id/1773270658/photo/professional-hairdresser-working-with-bearded-client-in-barbershop-closeup-black-and-white.jpg?s=612x612&w=0&k=20&c=wdcKDn9BnLe979S4BGQlYrKX8d4gBkRc4siYDQgPA-s="; // Hot towel & tools vibe
 
 const services = [
   {
@@ -118,7 +122,7 @@ const Services = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-      
+     
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-card to-background">
         <div className="container mx-auto px-4">
@@ -136,7 +140,7 @@ const Services = () => {
             </h1>
             <div className="section-divider mb-6" />
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Every service is an experience. We use only the finest products and techniques 
+              Every service is an experience. We use only the finest products and techniques
               to ensure you leave looking and feeling your absolute best.
             </p>
           </motion.div>
@@ -164,7 +168,6 @@ const Services = () => {
                     Popular
                   </div>
                 )}
-
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -173,18 +176,16 @@ const Services = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-                  
+                 
                   {/* Price Badge */}
                   <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
                     ${service.price}
                   </div>
-
                   {/* Category Badge */}
                   <div className="absolute bottom-4 left-4 bg-background/80 backdrop-blur-sm text-foreground px-2 py-1 rounded text-xs uppercase tracking-wider">
                     {service.category}
                   </div>
                 </div>
-
                 {/* Content */}
                 <div className="p-6">
                   <h3 className="font-serif text-xl font-bold mb-2 group-hover:text-primary transition-colors">
@@ -193,7 +194,7 @@ const Services = () => {
                   <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                     {service.description}
                   </p>
-                  
+                 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <span className="flex items-center gap-1">
@@ -241,7 +242,6 @@ const Services = () => {
           </motion.div>
         </div>
       </section>
-
       <Footer />
     </main>
   );
