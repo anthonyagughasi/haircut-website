@@ -4,8 +4,10 @@ import { Award, Users, Clock, Star } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-barber.jpg";
-import beardImage from "@/assets/beard-style.jpg";
+
+// High-quality direct online images (no local assets needed)
+const heroImage = "https://images.unsplash.com/photo-1555529771-36d2d0f9d131?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1974"; // Barber shop interior
+const beardImage = "https://images.unsplash.com/photo-1517832606295-a0d6e20f9315?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1974"; // Beard styling closeup
 
 const stats = [
   { icon: Users, value: "10,000+", label: "Happy Clients" },
@@ -42,7 +44,7 @@ const About = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-      
+     
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-card to-background">
         <div className="container mx-auto px-4">
@@ -76,10 +78,9 @@ const About = () => {
               <img
                 src={heroImage}
                 alt="Our Shop"
-                className="rounded-xl shadow-2xl"
+                className="rounded-xl shadow-2xl w-full h-full object-cover"
               />
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -91,19 +92,19 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Founded in 2010, Blade & Fade was born from a simple vision: to create a space 
-                  where men could experience grooming at its finest. A place where the art of 
+                  Founded in 2012, PengFade was born from a simple vision: to create a space
+                  where men could experience grooming at its finest. A place where the art of
                   barbering meets the comfort of a gentleman's club.
                 </p>
                 <p>
-                  Our founder, Marcus Cole, trained under some of the world's finest barbers 
-                  before bringing his expertise back home. His philosophy is simple – every 
+                  Our founder, Anthony, trained under some of the world's finest barbers
+                  before bringing his expertise back home. His philosophy is simple – every
                   man deserves to look and feel his absolute best.
                 </p>
                 <p>
-                  Today, our team of skilled artisans continues this legacy, blending 
-                  time-honored techniques with contemporary styles. From precision fades 
-                  to traditional straight razor shaves, we deliver an experience that 
+                  Today, our team of skilled artisans continues this legacy, blending
+                  time-honored techniques with contemporary styles. From precision fades
+                  to traditional straight razor shaves, we deliver an experience that
                   goes beyond just a haircut.
                 </p>
               </div>
@@ -156,7 +157,6 @@ const About = () => {
             </h2>
             <div className="section-divider" />
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <motion.div
