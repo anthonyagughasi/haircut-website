@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Clock, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import haircutImage from "@/assets/haircut-closeup.jpg";
-import beardImage from "@/assets/beard-style.jpg";
-import toolsImage from "@/assets/barber-tools.jpg";
+
+// High-quality direct online barber images (no local assets needed)
+const haircutImage = "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80";
+const beardImage = "https://images.unsplash.com/photo-1517832606295-a0d6e20f9315?ixlib=rb-4.0.3&auto=format&fit=crop&q=80";
+const toolsImage = "https://images.unsplash.com/photo-1516975080664-e2d87f69fcf1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80";
 
 const services = [
   {
@@ -72,7 +74,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -122,7 +124,7 @@ export function ServicesSection() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-                
+               
                 {/* Price Badge */}
                 <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
                   ${service.price}
@@ -137,7 +139,7 @@ export function ServicesSection() {
                 <p className="text-muted-foreground text-sm mb-4">
                   {service.description}
                 </p>
-                
+               
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
