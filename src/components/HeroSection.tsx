@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-barber.jpg";
+
+// High-quality direct online hero image (premium barber closeup - moody, professional)
+const heroImage = "https://images.unsplash.com/photo-1621607512213-8c3f27d2b0d5?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1974";
 
 export function HeroSection() {
   return (
@@ -59,7 +61,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.9 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            Where precision meets artistry. Experience the finest cuts, shaves, 
+            Where precision meets artistry. Experience the finest cuts, shaves,
             and grooming in an atmosphere of refined masculinity.
           </motion.p>
 
