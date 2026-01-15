@@ -4,24 +4,21 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import haircutImage from "@/assets/haircut-closeup.jpg";
-import beardImage from "@/assets/beard-style.jpg";
-import toolsImage from "@/assets/barber-tools.jpg";
-import heroImage from "@/assets/hero-barber.jpg";
 
+// High-quality barber images from Unsplash & Pexels (direct URLs - no local assets needed)
 const galleryImages = [
-  { id: 1, src: haircutImage, alt: "Executive Fade", category: "Fades" },
-  { id: 2, src: beardImage, alt: "Beard Styling", category: "Beards" },
-  { id: 3, src: toolsImage, alt: "Premium Tools", category: "Shop" },
-  { id: 4, src: heroImage, alt: "Shop Interior", category: "Shop" },
-  { id: 5, src: haircutImage, alt: "Classic Cut", category: "Haircuts" },
-  { id: 6, src: beardImage, alt: "Full Beard", category: "Beards" },
-  { id: 7, src: haircutImage, alt: "Skin Fade", category: "Fades" },
-  { id: 8, src: toolsImage, alt: "Straight Razor", category: "Shop" },
-  { id: 9, src: beardImage, alt: "Beard Trim", category: "Beards" },
-  { id: 10, src: haircutImage, alt: "Textured Top", category: "Haircuts" },
-  { id: 11, src: heroImage, alt: "Barber Chair", category: "Shop" },
-  { id: 12, src: beardImage, alt: "Groomed Look", category: "Beards" },
+  { id: 1, src: "https://images.unsplash.com/photo-1621607512213-8c3f27d2b0d5?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Executive Fade", category: "Fades" },
+  { id: 2, src: "https://images.unsplash.com/photo-1517832606295-a0d6e20f9315?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Beard Styling", category: "Beards" },
+  { id: 3, src: "https://images.unsplash.com/photo-1516975080664-e2d87f69fcf1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Premium Tools", category: "Shop" },
+  { id: 4, src: "https://images.unsplash.com/photo-1555529771-36d2d0f9d131?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Shop Interior", category: "Shop" },
+  { id: 5, src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Classic Cut", category: "Haircuts" },
+  { id: 6, src: "https://images.unsplash.com/photo-1632345031437-8a99492d1b0b?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Full Beard", category: "Beards" },
+  { id: 7, src: "https://images.unsplash.com/photo-1621607512213-8c3f27d2b0d5?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Skin Fade", category: "Fades" },
+  { id: 8, src: "https://images.unsplash.com/photo-1516975080664-e2d87f69fcf1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Straight Razor", category: "Shop" },
+  { id: 9, src: "https://images.unsplash.com/photo-1517832606295-a0d6e20f9315?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Beard Trim", category: "Beards" },
+  { id: 10, src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Textured Top", category: "Haircuts" },
+  { id: 11, src: "https://images.unsplash.com/photo-1555529771-36d2d0f9d131?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Barber Chair", category: "Shop" },
+  { id: 12, src: "https://images.unsplash.com/photo-1517832606295-a0d6e20f9315?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Groomed Look", category: "Beards" },
 ];
 
 const categories = ["All", "Haircuts", "Fades", "Beards", "Shop"];
@@ -30,14 +27,14 @@ const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
 
-  const filteredImages = activeCategory === "All" 
-    ? galleryImages 
+  const filteredImages = activeCategory === "All"
+    ? galleryImages
     : galleryImages.filter(img => img.category === activeCategory);
 
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-      
+     
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-card to-background">
         <div className="container mx-auto px-4">
@@ -85,7 +82,7 @@ const Gallery = () => {
       {/* Gallery Grid */}
       <section className="py-8 pb-24">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             layout
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
           >
