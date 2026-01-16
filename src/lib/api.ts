@@ -37,7 +37,7 @@ export interface BookingResponse {
   message: string;
 }
 
-// Mock data for demo (same as before so the site looks full)
+// Mock data for demo (keeps the site looking full)
 export const getMockServices = (): Service[] => [
   { id: 1, name: "Classic Haircut", price: 35, duration: 30, description: "Precision cut with hot towel finish" },
   { id: 2, name: "Executive Fade", price: 45, duration: 45, description: "Sharp fade with skin taper" },
@@ -66,7 +66,7 @@ export const getMockTimeSlots = (): TimeSlot[] => {
   }));
 };
 
-// Use mock data for services, assistants, availability (no real API needed)
+// Use mock data for services, assistants, availability
 export async function fetchServices(): Promise<Service[]> {
   return getMockServices();
 }
@@ -86,26 +86,41 @@ export async function fetchAvailability(
 // Real booking creation using Supabase
 export async function createBooking(bookingData: BookingData): Promise<BookingResponse> {
   try {
-    const { data, error } = await supabase
-  .from('Bookings') // capital B
-  .insert([
-    {
-      name: bookingData.name || null,
-      phone: bookingData.phone || null,
-      email: bookingData.email || null,
-      service: bookingData.service || null,
-      stylist: bookingData.stylist || null,
-      date: bookingData.date ? new Date(bookingData.date).toISOString().split('T')[0] : null, // format as YYYY-MM-DD
-      time: bookingData.time || null,
-      notes: bookingData.notes || null,
-    },
-  ])
-  .select();
+    // Format date to YYYY-MM-DD for Supabase date type
+    const formattedDate = bookingData.date.split('T')[0]; // ensures correct format
 
-    if (error) throw error;
+    const { data, error } = await supabase
+      .from('Bookings') // exact table name with capital B
+      .insert([
+        {
+          name: bookingData.name,
+          phone: bookingData.phone,
+          email: bookingData.email || null,
+          service: bookingData.service,
+          stylist: bookingData.stylist || null,
+          date: formattedDate,
+          time: bookingData.time,
+          notes: bookingData.notes || null,
+        },
+      ])
+      .select();
+
+    if (error) {
+      console.error('Supabase insert error:', error);
+      throw error;
+    }
 
     // Send email notification to you
-    await sendBookingEmail(bookingData);
+    await sendBookingEmail({
+      name: bookingData.name,
+      phone: bookingData.phone,
+      email: bookingData.email,
+      service: bookingData.service,
+      stylist: bookingData.stylist,
+      date: formattedDate,
+      time: bookingData.time,
+      notes: bookingData.notes,
+    });
 
     return {
       success: true,
