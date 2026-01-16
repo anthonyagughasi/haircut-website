@@ -1,6 +1,6 @@
 // Supabase Integration for Bookings
-import { supabase } from "./lib/supabaseClient";
-import { sendBookingEmail } from "./lib/sendEmail";
+import { supabase } from "./supabaseClient";
+import { sendBookingEmail } from "./sendEmail";
 
 export interface Service {
   id: number;
