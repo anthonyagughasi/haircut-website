@@ -87,7 +87,7 @@ export async function fetchAvailability(
 export async function createBooking(bookingData: BookingData): Promise<BookingResponse> {
   try {
     const { data, error } = await supabase
-      .from('bookings')
+      .from('Bookings')
       .insert([
         {
           name: bookingData.name,
