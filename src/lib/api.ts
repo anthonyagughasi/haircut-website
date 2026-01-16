@@ -86,23 +86,29 @@ export async function fetchAvailability(
 // Real booking creation using Supabase
 export async function createBooking(bookingData: BookingData): Promise<BookingResponse> {
   try {
-    // Format date to YYYY-MM-DD for Supabase date type
-    const formattedDate = bookingData.date.split('T')[0]; // ensures correct format
+    // Safe date formatting for Supabase date type (YYYY-MM-DD)
+    let formattedDate = null;
+    if (bookingData.date) {
+      const d = new Date(bookingData.date);
+      if (!isNaN(d.getTime())) {
+        formattedDate = d.toISOString().split('T')[0];
+      }
+    }
+
+    const insertData = {
+      name: bookingData.name,
+      phone: bookingData.phone,
+      email: bookingData.email || null,
+      service: bookingData.service,
+      stylist: bookingData.stylist || null,
+      date: formattedDate,
+      time: bookingData.time,
+      notes: bookingData.notes || null,
+    };
 
     const { data, error } = await supabase
-      .from('Bookings') // exact table name with capital B
-      .insert([
-        {
-          name: bookingData.name,
-          phone: bookingData.phone,
-          email: bookingData.email || null,
-          service: bookingData.service,
-          stylist: bookingData.stylist || null,
-          date: formattedDate,
-          time: bookingData.time,
-          notes: bookingData.notes || null,
-        },
-      ])
+      .from('Bookings') // capital B to match your table
+      .insert([insertData])
       .select();
 
     if (error) {
@@ -112,14 +118,8 @@ export async function createBooking(bookingData: BookingData): Promise<BookingRe
 
     // Send email notification to you
     await sendBookingEmail({
-      name: bookingData.name,
-      phone: bookingData.phone,
-      email: bookingData.email,
-      service: bookingData.service,
-      stylist: bookingData.stylist,
-      date: formattedDate,
-      time: bookingData.time,
-      notes: bookingData.notes,
+      ...bookingData,
+      date: formattedDate || bookingData.date,
     });
 
     return {
@@ -127,7 +127,7 @@ export async function createBooking(bookingData: BookingData): Promise<BookingRe
       message: "Your appointment has been booked! We'll contact you shortly to confirm.",
     };
   } catch (error: any) {
-    console.error('Booking error:', error);
+    console.error('Booking error:', error.message || error);
     return {
       success: false,
       message: "Booking failed. Please try again or call us directly.",
