@@ -87,20 +87,20 @@ export async function fetchAvailability(
 export async function createBooking(bookingData: BookingData): Promise<BookingResponse> {
   try {
     const { data, error } = await supabase
-      .from('Bookings')
-      .insert([
-        {
-          name: bookingData.name,
-          phone: bookingData.phone,
-          email: bookingData.email,
-          service: bookingData.service,
-          stylist: bookingData.stylist || null,
-          date: bookingData.date,
-          time: bookingData.time,
-          notes: bookingData.notes || null,
-        },
-      ])
-      .select();
+  .from('Bookings') // capital B
+  .insert([
+    {
+      name: bookingData.name || null,
+      phone: bookingData.phone || null,
+      email: bookingData.email || null,
+      service: bookingData.service || null,
+      stylist: bookingData.stylist || null,
+      date: bookingData.date ? new Date(bookingData.date).toISOString().split('T')[0] : null, // format as YYYY-MM-DD
+      time: bookingData.time || null,
+      notes: bookingData.notes || null,
+    },
+  ])
+  .select();
 
     if (error) throw error;
 
