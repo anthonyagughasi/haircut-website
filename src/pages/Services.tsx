@@ -5,12 +5,9 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
-// Replaced all missing local images with high-quality direct URLs
-const haircutImage = "https://media.istockphoto.com/id/2153275978/photo/barber-cutting-hair-in-barber-shop.jpg?s=612x612&w=0&k=20&c=ts-bMtC79Re-sQ9dOX_xikQ3-__cWC-9wJSBZxQ_kvI="; // Sharp fade closeup
-
-const beardImage = "https://media.istockphoto.com/id/2157531589/photo/hairdresser-trimming-beard-of-the-customer-at-a-barbershop-small-business.jpg?s=612x612&w=0&k=20&c=hHSbM1zEBSJW_lVxK3y3MUe1BY3eX_cssjmVY3cy5OE="; // Beard sculpting closeup
-
-const toolsImage = "https://media.istockphoto.com/id/1773270658/photo/professional-hairdresser-working-with-bearded-client-in-barbershop-closeup-black-and-white.jpg?s=612x612&w=0&k=20&c=wdcKDn9BnLe979S4BGQlYrKX8d4gBkRc4siYDQgPA-s="; // Hot towel & tools vibe
+// Import your own local images from src/assets
+import photo1 from "@/assets/IMG-20251101-WA0051[1].jpg";
+import photo2 from "@/assets/1697624400767[1].jpg";
 
 const services = [
   {
@@ -19,7 +16,7 @@ const services = [
     price: 35,
     duration: 30,
     description: "Precision cut with consultation, shampoo, and finish styling. Includes hot towel treatment.",
-    image: haircutImage,
+    image: photo1,
     category: "Hair",
   },
   {
@@ -28,7 +25,7 @@ const services = [
     price: 45,
     duration: 45,
     description: "Sharp skin fade with taper, line-up, and hot towel finish. Perfect for the modern professional.",
-    image: haircutImage,
+    image: photo2,
     category: "Hair",
   },
   {
@@ -37,7 +34,7 @@ const services = [
     price: 25,
     duration: 20,
     description: "Clean, uniform length all around. Low maintenance, high style.",
-    image: haircutImage,
+    image: photo1,
     category: "Hair",
   },
   {
@@ -46,7 +43,7 @@ const services = [
     price: 25,
     duration: 25,
     description: "Patient, friendly service for our youngest clients (12 and under).",
-    image: haircutImage,
+    image: photo2,
     category: "Hair",
   },
   {
@@ -55,7 +52,7 @@ const services = [
     price: 30,
     duration: 30,
     description: "Expert shaping, trimming, and conditioning. Includes beard oil treatment.",
-    image: beardImage,
+    image: photo1,
     category: "Beard",
   },
   {
@@ -64,7 +61,7 @@ const services = [
     price: 20,
     duration: 20,
     description: "Quick maintenance trim to keep your beard looking sharp.",
-    image: beardImage,
+    image: photo2,
     category: "Beard",
   },
   {
@@ -73,7 +70,7 @@ const services = [
     price: 40,
     duration: 45,
     description: "Traditional straight razor experience with pre-shave oil, hot towels, and aftershave balm.",
-    image: toolsImage,
+    image: photo1,
     category: "Shave",
   },
   {
@@ -82,7 +79,7 @@ const services = [
     price: 35,
     duration: 40,
     description: "Complete head shave with hot towel treatment and moisturizing finish.",
-    image: toolsImage,
+    image: photo2,
     category: "Shave",
   },
   {
@@ -91,7 +88,7 @@ const services = [
     price: 85,
     duration: 90,
     description: "Our signature package: haircut, beard sculpting, hot towel shave, and facial massage.",
-    image: beardImage,
+    image: photo1,
     category: "Packages",
     featured: true,
   },
@@ -101,7 +98,7 @@ const services = [
     price: 60,
     duration: 60,
     description: "Complete grooming with haircut and full beard service.",
-    image: haircutImage,
+    image: photo2,
     category: "Packages",
   },
   {
@@ -110,7 +107,7 @@ const services = [
     price: 120,
     duration: 120,
     description: "Look your best on the big day. Full service with premium products and relaxation time.",
-    image: beardImage,
+    image: photo1,
     category: "Packages",
     featured: true,
   },
@@ -122,7 +119,7 @@ const Services = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-     
+
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-card to-background">
         <div className="container mx-auto px-4">
@@ -176,7 +173,7 @@ const Services = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-                 
+
                   {/* Price Badge */}
                   <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
                     ${service.price}
@@ -194,7 +191,7 @@ const Services = () => {
                   <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                     {service.description}
                   </p>
-                 
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <span className="flex items-center gap-1">
@@ -242,6 +239,7 @@ const Services = () => {
           </motion.div>
         </div>
       </section>
+
       <Footer />
     </main>
   );
