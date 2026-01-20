@@ -60,9 +60,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-muted-foreground">
-                      123 Style Avenue<br />
-                      Downtown District<br />
-                      New York, NY 10001
+                      Abuja<br />
+                      Nigeria<br />
                     </p>
                   </div>
                 </div>
@@ -73,7 +72,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-muted-foreground">(555) 123-4567</p>
+                    <p className="text-muted-foreground">(+234) 8107261078</p>
                   </div>
                 </div>
 
@@ -83,7 +82,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@bladefade.com</p>
+                    <p className="text-muted-foreground">anthonyagughasi@gmail.com</p>
                   </div>
                 </div>
 
@@ -94,9 +93,9 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Hours</h3>
                     <div className="text-muted-foreground space-y-1">
-                      <p>Tuesday - Friday: 9AM - 7PM</p>
-                      <p>Saturday: 9AM - 5PM</p>
-                      <p>Sunday - Monday: Closed</p>
+                      <p>Monday - Friday: 8AM - 7PM</p>
+                      <p>Saturday: 8AM - 5PM</p>
+                      <p>Sunday - Monday: 8AM - 10PM</p>
                     </div>
                   </div>
                 </div>
