@@ -5,20 +5,24 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
-// High-quality barber images from Unsplash & Pexels (direct URLs - no local assets needed)
+// Import your own local images from src/assets
+import photo1 from "@/assets/IMG-20251101-WA0051[1].jpg";
+import photo2 from "@/assets/1697624400767[1].jpg";
+// Add more when you upload more JPGs
+
 const galleryImages = [
-  { id: 1, src: "https://images.unsplash.com/photo-1621607512213-8c3f27d2b0d5?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Executive Fade", category: "Fades" },
-  { id: 2, src: "https://images.unsplash.com/photo-1517832606295-a0d6e20f9315?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Beard Styling", category: "Beards" },
-  { id: 3, src: "https://images.unsplash.com/photo-1516975080664-e2d87f69fcf1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Premium Tools", category: "Shop" },
-  { id: 4, src: "https://images.unsplash.com/photo-1555529771-36d2d0f9d131?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Shop Interior", category: "Shop" },
-  { id: 5, src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Classic Cut", category: "Haircuts" },
-  { id: 6, src: "https://images.unsplash.com/photo-1632345031437-8a99492d1b0b?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Full Beard", category: "Beards" },
-  { id: 7, src: "https://images.unsplash.com/photo-1621607512213-8c3f27d2b0d5?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Skin Fade", category: "Fades" },
-  { id: 8, src: "https://images.unsplash.com/photo-1516975080664-e2d87f69fcf1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Straight Razor", category: "Shop" },
-  { id: 9, src: "https://images.unsplash.com/photo-1517832606295-a0d6e20f9315?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Beard Trim", category: "Beards" },
-  { id: 10, src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Textured Top", category: "Haircuts" },
-  { id: 11, src: "https://images.unsplash.com/photo-1555529771-36d2d0f9d131?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Barber Chair", category: "Shop" },
-  { id: 12, src: "https://images.unsplash.com/photo-1517832606295-a0d6e20f9315?ixlib=rb-4.0.3&auto=format&fit=crop&q=80", alt: "Groomed Look", category: "Beards" },
+  { id: 1, src: photo1, alt: "Classic Haircut", category: "Haircuts" },
+  { id: 2, src: photo2, alt: "Executive Fade", category: "Fades" },
+  { id: 3, src: photo1, alt: "Beard Styling", category: "Beards" },
+  { id: 4, src: photo2, alt: "Shop Interior", category: "Shop" },
+  { id: 5, src: photo1, alt: "Skin Fade", category: "Fades" },
+  { id: 6, src: photo2, alt: "Full Beard Grooming", category: "Beards" },
+  { id: 7, src: photo1, alt: "Premium Tools", category: "Shop" },
+  { id: 8, src: photo2, alt: "Straight Razor Shave", category: "Shop" },
+  { id: 9, src: photo1, alt: "Textured Top", category: "Haircuts" },
+  { id: 10, src: photo2, alt: "Groomed Look", category: "Beards" },
+  { id: 11, src: photo1, alt: "Barber Chair", category: "Shop" },
+  { id: 12, src: photo2, alt: "Master Barber at Work", category: "Haircuts" },
 ];
 
 const categories = ["All", "Haircuts", "Fades", "Beards", "Shop"];
@@ -34,7 +38,7 @@ const Gallery = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-     
+
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-card to-background">
         <div className="container mx-auto px-4">
