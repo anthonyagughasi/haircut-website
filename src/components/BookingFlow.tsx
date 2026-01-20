@@ -698,6 +698,7 @@ function StepFour({
 }
 
 // Booking Confirmation
+console.log('Form data received:', formData);
 function BookingConfirmation({ 
   bookingId, 
   service, 
