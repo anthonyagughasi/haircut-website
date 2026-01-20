@@ -126,19 +126,19 @@ export function BookingFlow() {
     setIsSubmitting(true);
     setError(null);
 
-    // === DEBUG LOG: This will show exactly what data is being sent ===
+    // === DEBUG: Log the exact data being sent ===
     const formData = {
-      service_id: selectedService.id,
-      assistant_id: selectedAssistant?.id,
+      name: customerDetails.name,
+      phone: customerDetails.phone,
+      email: customerDetails.email,
+      service: selectedService.name,
+      stylist: selectedAssistant?.name,
       date: selectedDate.toISOString().split("T")[0],
       time: selectedTime,
-      customer_name: customerDetails.name,
-      customer_email: customerDetails.email,
-      customer_phone: customerDetails.phone,
       notes: customerDetails.notes,
     };
 
-    console.log("Booking form data being sent:", formData);
+    console.log('Form data being sent to createBooking:', formData);
 
     const result = await createBooking(formData);
 
@@ -169,7 +169,7 @@ export function BookingFlow() {
       case 3:
         return selectedDate !== null && selectedTime !== null;
       case 4:
-        return customerDetails.name && customerDetails.email && customerDetails.phone;
+        return customerDetails.name && customerDetails.phone; // email optional
       default:
         return false;
     }
@@ -347,11 +347,11 @@ export function BookingFlow() {
   );
 }
 
-// Your StepOne, StepTwo, StepThree, StepFour, BookingConfirmation functions remain exactly the same
-// (keep them as you have them)
+// The rest of your StepOne, StepTwo, StepThree, StepFour, BookingConfirmation remain the same
+// (keep them exactly as you have them)
 
-function StepOne({ /* props */ }) { /* your existing code */ }
-function StepTwo({ /* props */ }) { /* your existing code */ }
-function StepThree({ /* props */ }) { /* your existing code */ }
-function StepFour({ /* props */ }) { /* your existing code */ }
-function BookingConfirmation({ /* props */ }) { /* your existing code */ }
+function StepOne({ /* props */ }) { /* your code */ }
+function StepTwo({ /* props */ }) { /* your code */ }
+function StepThree({ /* props */ }) { /* your code */ }
+function StepFour({ /* props */ }) { /* your code */ }
+function BookingConfirmation({ /* props */ }) { /* your code */ }
